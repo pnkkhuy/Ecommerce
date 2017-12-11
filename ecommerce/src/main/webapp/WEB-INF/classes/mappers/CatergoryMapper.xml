@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecommerce.spring.web.mappers.CategoryMapper" >
+	<resultMap id="Category" type="com.ecommerce.spring.web.model.Category" >
+		<id column="CategoryID" property="categoryID" jdbcType="INTEGER" />
+		<result column="CategoryName" property="categoryName" jdbcType="VARCHAR" />
+		<result column="Description" property="description" jdbcType="VARCHAR" />
+		<result column="IsActive" property="isActive" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="getAll" resultMap="Category">
+		SELECT * FROM category;
+	</select>
+	
+</mapper>

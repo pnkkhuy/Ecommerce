@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/chart.js/gulpfile.js|src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/jquery-sparkline/src/footer.js|src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/jquery-sparkline/src/header.js|src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/moment/templates/|src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/select2/src/js/banner.end.js|src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/select2/src/js/banner.start.js|src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/select2/src/js/wrapper.end.js|src/main/webapp/resources/Template/AdminLTE-2.4.2/bower_components/select2/src/js/wrapper.start.js" kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

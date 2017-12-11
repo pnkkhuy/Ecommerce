@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecommerce.spring.web.mappers.AccountsMapper" >
+	<resultMap id="Account" type="com.ecommerce.spring.web.model.Account" >
+		<id column="Email" property="email" jdbcType="VARCHAR" />
+		<result column="Password" property="password" jdbcType="VARCHAR" />
+		<result column="Role" property="role" jdbcType="VARCHAR" />
+		<result column="FullName" property="fullName" jdbcType="VARCHAR" />
+		<result column="Address" property="address" jdbcType="VARCHAR" />
+		<result column="Phone" property="phone" jdbcType="VARCHAR" />
+		<result column="BillingAddress" property="billingAddress" jdbcType="VARCHAR" />
+		<result column="ShipAddress" property="shipAddress" jdbcType="VARCHAR" />
+		<result column="DateEntered" property="dateEntered" jdbcType="DATE" />
+		<result column="Image" property="image" javaType="byte[]" jdbcType="BLOB" typeHandler="org.apache.ibatis.type.BlobTypeHandler" />
+		<result column="IsActive" property="isActive" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="getAll" resultMap="Account">
+		SELECT * FROM Accounts;
+	</select>
+	
+	<select id="findByEmail" resultMap="Account" parameterType="String">
+		SELECT * FROM Accounts WHERE Email = #{email} AND IsActive = 1
+	</select>
+	
+	<select id="getFullNameByEmail" resultType="String" parameterType="String">
+		SELECT FullName FROM Accounts WHERE Email = #{email} AND IsActive = 1
+	</select>
+	
+	<select id="getImageByEmail" resultMap="Account" parameterType="String">
+		SELECT Image FROM Accounts WHERE Email = #{email} AND IsActive = 1
+	</select> 
+	
+	<select id="getAccountRoles" resultMap="Account">
+		SELECT distinct(Role) from Accounts 
+	</select>
+	
+	<insert id="insertAccount" parameterType="com.ecommerce.spring.web.model.Account">
+		INSERT INTO Accounts(Email, Password, Role, FullName, Address, Phone, BillingAddress, ShipAddress, DateEntered)
+		VALUES(	#{Email, jdbcType=VARCHAR}, 
+				#{Password, jdbcType=VARCHAR}, 
+				#{Role, jdbcType=VARCHAR}, 
+				#{FullName, jdbcType=VARCHAR}, 
+				#{Address, jdbcType=VARCHAR}, 
+				#{Phone, jdbcType=VARCHAR}, 
+				#{BillingAddress, jdbcType=VARCHAR}, 
+				#{ShipAddress, jdbcType=VARCHAR}, 
+				Now())
+	</insert>
+	<update id="updateAccount" parameterType="com.ecommerce.spring.web.model.Account">
+    	UPDATE Accounts
+    	SET 
+    		Password = #{password, jdbcType=VARCHAR},
+    		FullName = #{fullName, jdbcType=VARCHAR},
+    		Address = #{address, jdbcType=VARCHAR},
+    		Phone = #{phone, jdbcType=VARCHAR},
+    		<if test="image != null">
+    		Image = #{image, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.BlobTypeHandler}
+    		</if>
+    	WHERE
+   		Email = #{email, jdbcType=VARCHAR}
+	</update>
+	
+</mapper>
