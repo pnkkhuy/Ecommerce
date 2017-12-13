@@ -12,4 +12,30 @@
 		SELECT * FROM category;
 	</select>
 	
+	<select id="findOneCategoryByID" resultMap="Category" parameterType="int">
+		SELECT CategoryID, CategoryName, Description 
+		FROM category
+		WHERE CategoryID = #{categoryID}
+	</select>
+	
+	<update id="deleteOrUndeleteCategory" parameterType="int">
+		UPDATE category
+		SET		 
+			IsActive = #{isActive}
+		WHERE CategoryID = #{categoryID}
+	</update>
+	
+	<insert id="insertCategory" parameterType="com.ecommerce.spring.web.model.Category">
+		INSERT INTO category(CategoryName, Description, IsActive)
+		VALUES(#{categoryName}, #{description}, 1)
+	</insert>
+	
+	<update id="updateCategory" parameterType="com.ecommerce.spring.web.model.Category">
+		UPDATE category
+		SET
+			CategoryName = #{categoryName},
+			Description = #{description}
+		WHERE 
+			CategoryID = #{categoryID}
+	</update>	
 </mapper>

@@ -6,7 +6,7 @@
 <tiles:importAttribute name="javascripts"/>
 
 <!-- Cài đặt đường dẫn -->
-<spring:url value="/admin/category/show" var="categoryshow"/>
+<spring:url value="/admin/category" var="categoryshow"/>
 <spring:url value="/admin/profile" var="profile" />
 <spring:url value="/admin" var="path"/>
 <!-- ./ Cài đặt đường dẫn -->

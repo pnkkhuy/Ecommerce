@@ -85,6 +85,16 @@
 				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/categorytable.js" />				
 			</put-list-attribute>
 		</definition>
+		
+		<!-- Trang cập nhật - thêm category -->
+		<definition name="addcategory.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Thêm danh mục" />
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_category.jsp"></put-attribute>
+		</definition>
+		<definition name="updatecategory.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Cập nhật thông tin danh mục" />
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_category.jsp"></put-attribute>
+		</definition>		
 <!-- Admin Page End -->	
 
 </tiles-definitions>

@@ -1,4 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+
 
 <div class="row">
 	<div class="col-xs-12">
@@ -8,6 +11,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
+				
 			  <table id="categoryTable" class="table table-bordered table-striped">
 				<thead>
 				<tr>
@@ -15,6 +19,7 @@
 				  <th>Tên danh mục</th>
 				  <th>Mô tả</th>
 				  <th>Trạng thái</th>
+				  <th>Cập nhật</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -24,15 +29,30 @@
 					  		<td>${category.categoryName}</td>
 						  	<td>${category.description}</td>
 						  	<td>
+						  	
+						  	<!-- Cài đặt đường dẫn -->
+						  	<c:choose>
+						  	<c:when test="${category.isActive == 1}">
+						  		<c:set var="isActive" value="0"/>
+						  	</c:when>
+						  	<c:otherwise>
+						  		<c:set var="isActive" value="1"/>
+						  	</c:otherwise>
+						  	</c:choose>						  	
+							<spring:url value="/admin/category/delete/${category.categoryID}&${isActive}" var="categoryUrlDelete"/>
+							<spring:url value="/admin/category/update/${category.categoryID}" var="categoryUrlUpdate"/>
+							<!-- ./Cài đặt đường dẫn -->
+						  	
 						  		<c:choose>
 						  			<c:when test="${category.isActive == 1}">
-						  				<span class="label label-success">Đang bật</span>
+										<button class="btn btn-info btn-sm" onclick="location.href='${categoryUrlDelete}'">Bật</button>
 						  			</c:when>
 						  			<c:otherwise>
-						  				<span class="label label-danger">Không hoạt động</span>
+										<button class="btn btn-danger btn-sm" onclick="location.href='${categoryUrlDelete}'">Tắt</button>
 						  			</c:otherwise>
 						  		</c:choose>
 						  	</td>
+						  	<td><button class="btn btn-info btn-sm" onclick="location.href='${categoryUrlUpdate}'">Cập nhật</button></td>
 						</tr>
 					</c:forEach>           
 				</tbody>
@@ -42,6 +62,7 @@
 				  <th>Tên danh mục</th>
 				  <th>Mô tả</th>
 				  <th>Trạng thái</th>
+				  <th>Cập nhật</th>				  
 				</tr>
 				</tfoot>
 			  </table>
@@ -52,3 +73,9 @@
 	</div> <!-- ./ col -->
 </div> <!-- ./ row -->
 
+<div class="row">
+
+		<spring:url value="/admin/category/add" var="categoryUrlAdd"/>
+		<button class="btn btn-info btn-sm" onclick="location.href='${categoryUrlAdd}'">Thêm danh mục</button>
+	
+</div>
