@@ -40,8 +40,7 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value = "/admin/category/delete/{categoryID}&{isActive}", method = RequestMethod.GET)
-	public String deleteCategory(Model model, 
-									@PathVariable("categoryID") int categoryID, 
+	public String deleteOrUnDeleteCategory(@PathVariable("categoryID") int categoryID, 
 									@PathVariable("isActive") int isActive) {
 		
 		try {
@@ -58,9 +57,8 @@ public class CategoryController {
 	@RequestMapping(value = "/admin/category/update/{categoryID}", method = RequestMethod.GET)
 	public String updateCategory(Model model, @PathVariable("categoryID")int categoryID) {
 		try {
-			Category category = categoryService.findOneCategoryByID(categoryID);
 			model.addAttribute("action", "update");
-			model.addAttribute("categoryForm", category);
+			model.addAttribute("categoryForm", categoryService.findOneCategoryByID(categoryID));
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -84,15 +82,11 @@ public class CategoryController {
 			try {			
 				categoryService.updateCategory(category);
 				redirectAttributes.addFlashAttribute("css", "success");
-				redirectAttributes.addFlashAttribute("msg", "User updated successfully!");	
+				redirectAttributes.addFlashAttribute("msg", "Cập nhật thông tin danh mục thành công");	
 			} catch (Exception e) {
 				// TODO: handle exception
-			}
-			
+			}		
 		}
-		
-		
-		
 		return "redirect:/admin/category";
 	}
 	

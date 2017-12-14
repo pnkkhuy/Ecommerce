@@ -7,6 +7,7 @@
 
 <!-- Cài đặt đường dẫn -->
 <spring:url value="/admin/category" var="categoryshow"/>
+<spring:url value="/admin/suppliers" var="suppliersshow"/>
 <spring:url value="/admin/profile" var="profile" />
 <spring:url value="/admin" var="path"/>
 <!-- ./ Cài đặt đường dẫn -->
@@ -272,7 +273,7 @@ desired effect
         <li class="header">Chức năng</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="${categoryshow}"><i class="fa fa-link"></i> <span>Quản lý danh mục</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li><a href="${suppliersshow}"><i class="fa fa-link"></i> <span>Quản lý nhà cung cấp</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">

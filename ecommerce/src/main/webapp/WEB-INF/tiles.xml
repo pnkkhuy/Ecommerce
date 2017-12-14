@@ -94,7 +94,40 @@
 		<definition name="updatecategory.layout" extends="adminpage.layout">
 			<put-attribute name="title" value="Cập nhật thông tin danh mục" />
 			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_category.jsp"></put-attribute>
-		</definition>		
+		</definition>
+		
+		
+		<!-- Trang hiển thị danh sách supplier -->
+		<definition name ="supplierslist.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Quản lý nhà cung cấp"/>
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_suppliers.jsp"/>
+			<put-list-attribute name="stylesheets" inherit="true">
+				<!-- DataTables -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"/>								
+			</put-list-attribute>
+			
+			<put-list-attribute name="javascripts" inherit="true" >
+				<!-- DataTables -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"/>
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"/>	
+				<!-- SlimScroll -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"/>
+				<!-- FastClick -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"/>
+				<!-- supplier Table script PNKHuy -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/supplierstable.js" />				
+			</put-list-attribute>
+		</definition>
+		
+		<!-- Trang cập nhật - thêm supplier -->
+		<definition name="addsupplier.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Thêm nhà cung cấp" />
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_supplier.jsp"></put-attribute>
+		</definition>
+		<definition name="updatesupplier.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Cập nhật thông tin nhà cung cấp" />
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_supplier.jsp"></put-attribute>
+		</definition>				
 <!-- Admin Page End -->	
 
 </tiles-definitions>

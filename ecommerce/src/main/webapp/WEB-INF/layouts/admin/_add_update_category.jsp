@@ -8,10 +8,8 @@
 	<div class="col-md-8">
 		<div class="box box-primary">
             <div class="box-header with-border">
-<%--             <tiles:getAsString name="title" /> --%>
               <h3 class="box-title"></h3>
-            </div>
-            
+            </div>            
             <!-- Hiển thị thông tin cập nhật thành công hay thất bại -->
           		<c:if test="${not empty msg}">
 				<div class="alert alert-${css} alert-dismissible" role="alert">
@@ -34,7 +32,6 @@
 					<c:set value="Add" var="btnSubmit"/>
 				</c:otherwise>
 			</c:choose>
-            <spring:url value="/admin/add" var="updateprofileUrl" />
             
 			<form:form role="form" class="form-horizontal" 
 					modelAttribute="categoryForm"
