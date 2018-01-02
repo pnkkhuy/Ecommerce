@@ -22,13 +22,17 @@ public class CategoryService implements CategoryServiceI {
 	}
 
 	@Override
+	public List<Category> getAllAvailableCategory() {
+		return categoryMapper.getAllAvailableCategory();
+	}
+	
+	@Override
 	public void deleteOrUndeleteCategory(int categoryID, int isActive) throws Exception {
 		try {
 			categoryMapper.deleteOrUndeleteCategory(categoryID, isActive);
 		} catch(Exception e) {
 			throw new Exception("[deleteOrUndeleteCategory] - Category Service Error: " + e.getMessage());
-		}
-		
+		}		
 	}
 
 	@Override
@@ -38,7 +42,6 @@ public class CategoryService implements CategoryServiceI {
 		} catch (Exception e) {
 			throw new Exception("[insertCategory] - Category Service Error: " + e.getMessage());
 		}
-		
 	}
 
 	@Override

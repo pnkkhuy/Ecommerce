@@ -8,37 +8,29 @@
 			  <h3 class="box-title">Danh sách các nhà cung cấp</h3>
 			</div>
 			<!-- /.box-header -->
-			<div class="box-body">
-				
-			  <table id="suppliersTable" class="table table-bordered table-striped">
+			<div class="box-body">				
+			  <table id="dataTable" class="table table-bordered table-striped">
 				<thead>
 				<tr>
-				  <th>Mã NCC</th>
-				  <th>Tên công ty</th>
-				  <th>Tên người liên hệ</th>
-				  <th>Địa chỉ</th>
-				  <th>SĐT</th>
-				  <th>Fax</th>
-				  <th>Email</th>
-				  <th>Website</th>
-				  <th>Ghi chú</th>
-				  <th>Tình trạng</th>
-				  <th>Cập nhật</th>	
+				  <th class="col-md-1">Mã NCC</th>
+				  <th class="col-md-2">Tên công ty</th>
+				  <th class="col-md-3">Tên người liên hệ</th>
+				  <th class="col-md-3">Địa chỉ</th>
+				  <th class="col-md-1">SĐT</th>
+				  <th class="col-md-1">Email</th>
+				  <th class="col-md-1"></th>	
 				</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${listSupplier}" var="supplier">
 						<tr>
-				  			<td>${supplier.supplierID}</td>
-					  		<td>${supplier.companyName}</td>
-						  	<td>${supplier.contactName}</td>
-						  	<td>${supplier.address}</td>
-						  	<td>${supplier.phone}</td>
-						  	<td>${supplier.fax}</td>
-						  	<td>${supplier.email}</td>
-						  	<td>${supplier.website}</td>
-						  	<td>${supplier.note}</td>
-						  	<td>
+				  			<td class="col-md-1">${supplier.supplierID}</td>
+					  		<td class="col-md-2">${supplier.companyName}</td>
+						  	<td class="col-md-3">${supplier.contactName}</td>
+						  	<td class="col-md-3">${supplier.address}</td>
+						  	<td class="col-md-1">${supplier.phone}</td>
+						  	<td class="col-md-1">${supplier.email}</td>						  	
+						  	<td class="col-md-1">
 						  	
 						  	<!-- Cài đặt đường dẫn -->
 						  	<c:choose>
@@ -52,33 +44,38 @@
 							<spring:url value="/admin/suppliers/delete/${supplier.supplierID}&${isActive}" var="supplierUrlDelete"/>
 							<spring:url value="/admin/suppliers/update/${supplier.supplierID}" var="supplierUrlUpdate"/>
 							<!-- ./Cài đặt đường dẫn -->
-						  	
-						  		<c:choose>
+
+							<div class="btn-group btn-group-vertical" role="group">
+							  <div class="btn-group" role="group">
+							    
+		    			  		<c:choose>
 						  			<c:when test="${supplier.isActive == 1}">
-										<button class="btn btn-info btn-sm" onclick="location.href='${supplierUrlDelete}'">Bật</button>
+										<button class="btn btn-info btn-xs" onclick="location.href='${supplierUrlDelete}'">Bật</button>
 						  			</c:when>
 						  			<c:otherwise>
-										<button class="btn btn-danger btn-sm" onclick="location.href='${supplierUrlDelete}'">Tắt</button>
+										<button class="btn btn-danger btn-xs" onclick="location.href='${supplierUrlDelete}'">Tắt</button>
 						  			</c:otherwise>
 						  		</c:choose>
+
+							  </div>
+							  <div class="btn-group" role="group">
+							    <button class="btn btn-info btn-xs" onclick="location.href='${supplierUrlUpdate}'">Cập nhật</button>
+							  </div>
+							</div>
+						  	
 						  	</td>
-						  	<td><button class="btn btn-info btn-sm" onclick="location.href='${supplierUrlUpdate}'">Cập nhật</button></td>
 						</tr>
 					</c:forEach>           
 				</tbody>
 				<tfoot>
 				<tr>
-				  <th>Mã NCC</th>
-				  <th>Tên công ty</th>
-				  <th>Tên người liên hệ</th>
-				  <th>Địa chỉ</th>
-				  <th>SĐT</th>
-				  <th>Fax</th>
-				  <th>Email</th>
-				  <th>Website</th>
-				  <th>Ghi chú</th>
-				  <th>Tình trạng</th>
-				  <th>Cập nhật</th>				  
+					<th class="col-md-1">Mã NCC</th>
+				  	<th class="col-md-2">Tên công ty</th>
+				  	<th class="col-md-3">Tên người liên hệ</th>
+				  	<th class="col-md-3">Địa chỉ</th>
+				  	<th class="col-md-1">SĐT</th>
+				  	<th class="col-md-1">Email</th>
+				  	<th class="col-md-1"></th>			  
 				</tr>
 				</tfoot>
 			  </table>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecommerce.spring.web.mappers.ProductsMapper" >
+	<resultMap id="Product" type="com.ecommerce.spring.web.model.Product" >
+		<id column="ProductID" property="productID" jdbcType="BIGINT" />
+		<result column="ProductName" property="productName" jdbcType="VARCHAR" />
+		<result column="ProductDescription" property="productDescription" jdbcType="VARCHAR" />
+		<result column="SupplierID" property="supplier.supplierID" jdbcType="BIGINT" />
+		<result column="CompanyName" property="supplier.companyName" jdbcType="VARCHAR" />
+		<result column="ContactName" property="supplier.contactName" jdbcType="VARCHAR" />
+		<result column="CategoryID" property="category.categoryID" jdbcType="BIGINT" />
+		<result column="CategoryName" property="category.categoryName" jdbcType="VARCHAR" />
+		<result column="QuantityPerUnit" property="quantityPerUnit" jdbcType="INTEGER" />		
+		<result column="UnitPrice" property="unitPrice" jdbcType="DECIMAL" />		
+		<result column="AvailableSize" property="availableSize" jdbcType="VARCHAR" />
+		<result column="AvailableColors" property="availableColors" jdbcType="VARCHAR" />
+		<result column="Size" property="size" jdbcType="VARCHAR" />
+		<result column="Color" property="color" jdbcType="VARCHAR" />
+		<result column="Discount" property="discount" jdbcType="DECIMAL" />
+		<result column="UnitWeight" property="unitWeight" jdbcType="VARCHAR" />
+		<result column="UnitOnStock" property="unitOnStock" jdbcType="VARCHAR" />
+		<result column="UnitOnOrder" property="unitOnOrder" jdbcType="VARCHAR" />
+		<result column="IsActive" property="isActive" jdbcType="INTEGER" />		
+	</resultMap>
+	
+	<select id="getAll" resultMap="Product">
+		SELECT 
+			p.ProductID,
+			p.ProductName,
+            p.SupplierID,
+            s.CompanyName,
+			s.ContactName,
+            p.CategoryID,
+            c.CategoryName,
+            p.Size,
+            p.Color,
+            p.Discount,
+            p.UnitOnStock,
+            p.IsActive
+		FROM 
+			products p 
+            LEFT JOIN suppliers s 
+			ON p.SupplierID = s.SupplierID
+            LEFT JOIN category c
+            ON p.CategoryID = c.CategoryID
+	</select>
+	
+	<select id="getAllAvailableProduct" resultMap="Product">
+		SELECT 
+			ProductID,
+			ProductName,
+			SupplerID,
+			CategoryID,
+			QuantityPerUnit,
+			UnitPrice,			
+		FROM
+			products
+		WHERE IsActive = 1;
+	</select>
+	
+	<select id="findOneProductByID" resultMap="Product" parameterType="int">
+		SELECT *
+		FROM products
+		WHERE ProductID = #{productID}
+	</select>
+	
+	<update id="deleteOrUndeleteProduct" parameterType="int">
+		UPDATE products
+		SET		 
+			IsActive = #{isActive}
+		WHERE ProductID = #{productID}
+	</update>
+	
+	<insert id="insertProduct" parameterType="com.ecommerce.spring.web.model.Product">
+		INSERT INTO products
+			(ProductName, 
+			ProductDescription, 
+			SupplierID, 
+			CategoryID, 
+			QuantityPerUnit, 
+			UnitPrice, 
+			AvailableSize, 
+			AvailableColors, 
+			Size, 
+			Color, 
+			Discount, 
+			UnitWeight, 
+			UnitOnStock, 
+			UnitOnOrder, 
+			IsActive)
+		VALUES
+			(#{productName, jdbcType=VARCHAR},
+			 #{productDescription, jdbcType=LONGVARCHAR},
+			 #{supplier.supplierID, jdbcType=BIGINT},
+			 #{category.categoryID, jdbcType=BIGINT},
+			 #{quantityPerUnit, jdbcType=INTEGER},
+			 #{unitPrice, jdbcType=DECIMAL},
+			 #{availableSize, jdbcType=VARCHAR},
+			 #{availableColors, jdbcType=VARCHAR},
+			 #{size, jdbcType=VARCHAR},
+			 #{color, jdbcType=VARCHAR},
+			 #{discount, jdbcType=DECIMAL},
+			 #{unitWeight, jdbcType=VARCHAR},
+			 #{unitOnStock, jdbcType=VARCHAR},
+			 #{unitOnOrder, jdbcType=VARCHAR},			
+			 1)
+	</insert>
+	
+	<update id="updateProduct" parameterType="com.ecommerce.spring.web.model.Product">
+		UPDATE Products
+		SET
+			ProductName = #{productName},
+			ProductDescription = #{productDescription},  
+			SupplierID = #{supplier.supplierID},
+			CategoryID = #{category.categoryID},
+			QuantityPerUnit = #{quantityPerUnit},
+			UnitPrice = #{unitPrice},
+			AvailableSize = #{availableSize},
+			AvailableColors = #{availableColors},
+			Size = #{size},
+			Color = #{color},
+			Discount = #{discount},
+			UnitWeight = #{unitWeight},
+			UnitOnStock = #{unitOnStock},
+			UnitOnOrder = #{unitOnOrder}
+		WHERE 
+			ProductID = #{productID}
+	</update>	
+</mapper>

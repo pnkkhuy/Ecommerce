@@ -8,6 +8,7 @@
 <!-- Cài đặt đường dẫn -->
 <spring:url value="/admin/category" var="categoryshow"/>
 <spring:url value="/admin/suppliers" var="suppliersshow"/>
+<spring:url value="/admin/products" var="productsshow"/>
 <spring:url value="/admin/profile" var="profile" />
 <spring:url value="/admin" var="path"/>
 <!-- ./ Cài đặt đường dẫn -->
@@ -28,7 +29,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title><tiles:getAsString name="title" /></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
+    <!-- AngularJS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+	
  	<!-- Css StyleSheet Link --> 
   	<c:forEach var="css" items="${stylesheets}">
         <link rel="stylesheet" type="text/css" href="<c:url value="${css}"/>">
@@ -44,7 +47,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-      
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -274,6 +276,7 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="${categoryshow}"><i class="fa fa-link"></i> <span>Quản lý danh mục</span></a></li>
         <li><a href="${suppliersshow}"><i class="fa fa-link"></i> <span>Quản lý nhà cung cấp</span></a></li>
+        <li><a href="${productsshow}"><i class="fa fa-link"></i> <span>Quản lý sản phẩm</span></a></li>        
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">

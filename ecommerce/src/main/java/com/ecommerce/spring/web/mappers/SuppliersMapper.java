@@ -10,6 +10,8 @@ public interface SuppliersMapper {
 	
 	List<Supplier> getAll();
 	
+	List<Supplier> getAllAvailableSuppliers();
+	
 	Supplier findOneSupplierByID(@Param("supplierID") int supplierID)  throws Exception;
 	
 	void deleteOrUndeleteSupplier(@Param("supplierID") int supplierID,

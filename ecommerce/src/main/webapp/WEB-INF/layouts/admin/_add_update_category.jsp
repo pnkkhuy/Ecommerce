@@ -51,8 +51,7 @@
 							<form:input type="text" 
 										path="categoryName"
 										maxlength="200" name="categoryName" 
-										class="form-control" id="categoryName" 
-										placeholder="Tên danh mục"/>
+										class="form-control" id="categoryName"/>
 							<form:errors path="categoryName" class="control-label" />												
 						</div>
 					</div>
@@ -65,13 +64,12 @@
 							<form:input type="text" path="description"
 										maxlength="200" name="description"  
 										class="form-control" 
-										id="description" 
-										placeholder="Mô tả"/>
+										id="description"/>
 							<form:errors path="description" class="control-label" />			
 						</div>
 					</div>
 					</spring:bind>
-										
+					
 	                <div class="box-footer">	                		                	
 	                	<button type="submit" class="btn-small btn-info pull-right">${btnSubmit}</button>
 		                <button type="button" class="btn-small btn-info">Clear</button>				                	

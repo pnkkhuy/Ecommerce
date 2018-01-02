@@ -12,6 +12,16 @@
 		SELECT * FROM category;
 	</select>
 	
+	<select id="getAllAvailableCategory" resultMap="Category">
+		SELECT 
+			CategoryID,
+			CategoryName,
+			Description
+		FROM
+			category
+		WHERE IsActive = 1;
+	</select>
+	
 	<select id="findOneCategoryByID" resultMap="Category" parameterType="int">
 		SELECT CategoryID, CategoryName, Description 
 		FROM category

@@ -104,7 +104,7 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value = "/admin/category/addprocess", method = RequestMethod.POST)
-	public String addeCategoryProcess(@ModelAttribute("categoryForm")@Validated Category category,
+	public String addCategoryProcess(@ModelAttribute("categoryForm")@Validated Category category,
 										BindingResult result, Model model, 
 										final RedirectAttributes redirectAttributes) {
 		

@@ -3,5 +3,5 @@
  */
 
   $(function () {
-    $('#categoryTable').DataTable()
+    $('#dataTable').DataTable();
   })

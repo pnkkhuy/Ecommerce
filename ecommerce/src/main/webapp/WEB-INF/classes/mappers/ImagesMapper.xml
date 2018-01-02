@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecommerce.spring.web.mappers.ImagesMapper" >
+	<resultMap id="Image" type="com.ecommerce.spring.web.model.Image" >
+		<id column="ImageID" property="imageID" jdbcType="BIGINT" />
+		<result column="Image" property="image" jdbcType="BLOB" javaType="byte[]" typeHandler="org.apache.ibatis.type.BlobTypeHandler"/>
+		<result column="Description" property="description" jdbcType="VARCHAR" />
+		<result column="CategoryID" property="categoryID" jdbcType="BIGINT" />
+		<result column="ProductID" property="productID" jdbcType="BIGINT" />
+	</resultMap>
+	
+	<select id="getAll" resultMap="Image">
+		SELECT * FROM images;
+	</select>	
+	
+	<select id="findOneImageByProductID" resultMap="Image" parameterType="int">
+		SELECT *
+		FROM images
+		WHERE ProductID = #{productID}
+	</select>
+	
+	<update id="deleteImage" parameterType="int">
+		DELETE FROM images
+		WHERE ImageID = #{imageID}
+	</update>
+	
+	<insert id="insertImage" parameterType="com.ecommerce.spring.web.model.Image">
+		INSERT INTO images(Image, Description, CategoryID, ProductID)
+		VALUES(#{image}, #{description}, #{categoryID}, #{productID})
+	</insert>
+	
+	<update id="updateImageByProductID" parameterType="com.ecommerce.spring.web.model.Image">
+		UPDATE images
+		SET
+			Description = #{description},			
+			CategoryID = #{categoryID},			
+			Image = #{image, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.BlobTypeHandler}
+		WHERE 
+			ProductID = #{productID}, 
+	</update>	
+</mapper>

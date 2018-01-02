@@ -45,6 +45,7 @@
        			page. However, you can choose any other skin. Make sure you
 	       		apply the skin class to the body tag so the changes take effect. -->
   			<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/css/skins/skin-blue.min.css" />
+  			
    		</put-list-attribute>
    				
 		<put-list-attribute name="javascripts">
@@ -82,7 +83,7 @@
 				<!-- FastClick -->
 				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"/>
 				<!-- Category Table script PNKHuy -->
-				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/categorytable.js" />				
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/datatable.js" />				
 			</put-list-attribute>
 		</definition>
 		
@@ -115,7 +116,7 @@
 				<!-- FastClick -->
 				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"/>
 				<!-- supplier Table script PNKHuy -->
-				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/supplierstable.js" />				
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/datatable.js" />				
 			</put-list-attribute>
 		</definition>
 		
@@ -127,6 +128,61 @@
 		<definition name="updatesupplier.layout" extends="adminpage.layout">
 			<put-attribute name="title" value="Cập nhật thông tin nhà cung cấp" />
 			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_supplier.jsp"></put-attribute>
+		</definition>
+		
+		
+		<!-- Trang hiển thị thông tin sản phẩm -->
+		<definition name ="productslist.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Quản lý sản phẩm"/>
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_products.jsp"/>
+			<put-list-attribute name="stylesheets" inherit="true">
+				<!-- DataTables -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"/>								
+			</put-list-attribute>
+			
+			<put-list-attribute name="javascripts" inherit="true" >
+				<!-- DataTables -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"/>
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"/>	
+				<!-- SlimScroll -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"/>
+				<!-- FastClick -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"/>
+				<!-- Table script PNKHuy -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/datatable.js" />
+			</put-list-attribute>
+		</definition>
+		
+		<!-- Trang thêm, cập nhật thông tin sản phẩm -->
+		<definition name="addproduct.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Thêm sản phẩm" />
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_product.jsp"></put-attribute>
+			
+			<put-list-attribute name="javascripts" inherit="true">
+				<!-- CK Editor -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/ckeditor/ckeditor.js" />
+				<!-- Bootstrap WYSIHTML5 -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />
+							
+				<!-- Script Editor by PNKHuy -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/editor.js" />
+								
+				
+			</put-list-attribute>
+		</definition>
+		<definition name="updateproduct.layout" extends="adminpage.layout">
+			<put-attribute name="title" value="Cập nhật thông tin sản phẩm" />
+			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_product.jsp"></put-attribute>
+			
+			<put-list-attribute name="javascripts" inherit="true">
+				<!-- CK Editor -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/ckeditor/ckeditor.js" />
+				<!-- Bootstrap WYSIHTML5 -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />
+							
+				<!-- Script Editor by PNKHuy -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/editor.js" />	
+			</put-list-attribute>
 		</definition>				
 <!-- Admin Page End -->	
 

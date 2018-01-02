@@ -50,5 +50,15 @@
         <beans:property name="mapperInterface" value="com.ecommerce.spring.web.mappers.SuppliersMapper" />
         <beans:property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </beans:bean>
+	
+	<beans:bean id="productsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <beans:property name="mapperInterface" value="com.ecommerce.spring.web.mappers.ProductsMapper" />
+        <beans:property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </beans:bean>
+	
+	<beans:bean id="imagesMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <beans:property name="mapperInterface" value="com.ecommerce.spring.web.mappers.ImagesMapper" />
+        <beans:property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </beans:bean>
 
 </beans:beans>

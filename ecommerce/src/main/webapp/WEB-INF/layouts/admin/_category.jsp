@@ -12,7 +12,7 @@
 			<!-- /.box-header -->
 			<div class="box-body">
 				
-			  <table id="categoryTable" class="table table-bordered table-striped">
+			  <table id="dataTable" class="table table-bordered table-striped">
 				<thead>
 				<tr>
 				  <th>Mã danh mục</th>
@@ -45,14 +45,14 @@
 						  	
 						  		<c:choose>
 						  			<c:when test="${category.isActive == 1}">
-										<button class="btn btn-info btn-sm" onclick="location.href='${categoryUrlDelete}'">Bật</button>
+										<button class="btn btn-info btn-xs" onclick="location.href='${categoryUrlDelete}'">Bật</button>
 						  			</c:when>
 						  			<c:otherwise>
-										<button class="btn btn-danger btn-sm" onclick="location.href='${categoryUrlDelete}'">Tắt</button>
+										<button class="btn btn-danger btn-xs" onclick="location.href='${categoryUrlDelete}'">Tắt</button>
 						  			</c:otherwise>
 						  		</c:choose>
 						  	</td>
-						  	<td><button class="btn btn-info btn-sm" onclick="location.href='${categoryUrlUpdate}'">Cập nhật</button></td>
+						  	<td><button class="btn btn-info btn-xs" onclick="location.href='${categoryUrlUpdate}'">Cập nhật</button></td>
 						</tr>
 					</c:forEach>           
 				</tbody>

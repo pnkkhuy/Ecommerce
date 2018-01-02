@@ -8,12 +8,14 @@ public interface CategoryServiceI {
 	
 	public List<Category> getAll();
 	
-	Category findOneCategoryByID(int categoryID) throws Exception;
+	public List<Category> getAllAvailableCategory();
 	
-	void deleteOrUndeleteCategory(int categoryID, int isActive) throws Exception;
+	public Category findOneCategoryByID(int categoryID) throws Exception;
 	
-	void insertCategory(Category category) throws Exception;
+	public void deleteOrUndeleteCategory(int categoryID, int isActive) throws Exception;
 	
-	void updateCategory(Category category) throws Exception;
+	public void insertCategory(Category category) throws Exception;
+	
+	public void updateCategory(Category category) throws Exception;
 	
 }

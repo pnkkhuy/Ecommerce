@@ -18,6 +18,17 @@
 		SELECT * FROM suppliers;
 	</select>
 	
+	<select id="getAllAvailableSuppliers" resultMap="Supplier">
+		SELECT 
+			SupplierID,
+			CompanyName,
+			ContactName
+		FROM
+			suppliers
+		WHERE
+			IsActive = 1;						
+	</select>
+	
 	<select id="findOneSupplierByID" resultMap="Supplier" parameterType="int">
 		SELECT * 
 		FROM suppliers

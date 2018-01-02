@@ -19,6 +19,12 @@ public class SuppliersService implements SuppliersServiceI {
 	public List<Supplier> getAll() {
 		return suppliersMapper.getAll();
 	}
+	
+	@Override
+	public List<Supplier> getAllAvailableSuppliers() {
+		return suppliersMapper.getAllAvailableSuppliers();
+	}
+	
 
 	@Override
 	public Supplier findOneSupplierByID(int supplierID) throws Exception {

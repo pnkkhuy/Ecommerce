@@ -10,6 +10,8 @@ public interface CategoryMapper {
 	
 	List<Category> getAll();
 	
+	List<Category> getAllAvailableCategory();
+	
 	Category findOneCategoryByID(@Param("categoryID") int categoryID)  throws Exception;
 	
 	void deleteOrUndeleteCategory(@Param("categoryID") int categoryID,
