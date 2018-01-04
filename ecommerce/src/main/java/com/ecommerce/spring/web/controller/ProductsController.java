@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ecommerce.spring.web.model.Product;
+import com.ecommerce.spring.web.model.ProductForm;
 import com.ecommerce.spring.web.service.CategoryService;
 import com.ecommerce.spring.web.service.ProductsService;
 import com.ecommerce.spring.web.service.SuppliersService;
@@ -70,13 +71,11 @@ public class ProductsController {
 		}
 
 		else {
-
 			try {
 				productsService.insertProduct(product);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-
 		}
 
 		return "redirect:/admin/products";
@@ -84,7 +83,9 @@ public class ProductsController {
 	
 	@RequestMapping(value = "/admin/products/update/{productID}", method = RequestMethod.GET)
 	public String updateProduct(Model model, @PathVariable("productID")int productID) throws Exception {
-		model.addAttribute("productForm", productsService.findOneProductByID(productID));
+		ProductForm productForm = new ProductForm(productsService.findOneProductByID(productID));
+		
+		model.addAttribute("productForm", productForm);
 		model.addAttribute("action", "update");
 		model.addAttribute("listSuppliers", suppliersService.getAllAvailableSuppliers());
 		model.addAttribute("listCategories", categoryService.getAllAvailableCategory());
@@ -92,7 +93,7 @@ public class ProductsController {
 	}
 	
 	@RequestMapping(value = "/admin/products/updateprocess")
-	public String updateProductProcess(@ModelAttribute("productForm")@Validated Product product, 
+	public String updateProductProcess(@ModelAttribute("productForm")@Validated ProductForm product, 
 										BindingResult result, Model model, 
 										final RedirectAttributes redirectAttributes) {
 		if(result.hasErrors()) {

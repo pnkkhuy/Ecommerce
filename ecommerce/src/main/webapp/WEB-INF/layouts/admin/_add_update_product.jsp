@@ -60,6 +60,16 @@
 					</div>
 					</spring:bind>
 					
+					<div class="form-group">						
+						<label for="inputSupplierID" class="col-sm-2 control-label">Hình ảnh sản phẩm</label>
+						<div class="col-sm-10">
+							<div class="file-loading">
+					            <input id="kv-explorer" name="multipartFiles" type="file" multiple>
+					        </div>
+					        <br>
+						</div>					
+					</div>
+					
 					<div class="form-group">
 						<label for="inputSupplierID" class="col-sm-2 control-label">Nhà cung cấp</label>
 						<div class="col-sm-10">

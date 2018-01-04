@@ -1,25 +1,24 @@
 package com.ecommerce.spring.web.model;
 
 import java.math.BigDecimal;
-import java.util.LinkedList;
 
 public class Product {
-	private long productID;
-	private String productName;
-	private String productDescription;
-	private Supplier supplier;
-	private Category category;
-	private int quantityPerUnit;
-	private BigDecimal unitPrice;
-	private String availableSize;
-	private String availableColors;
-	private String size;
-	private String color;
-	private BigDecimal discount;
-	private String unitWeight;
-	private String unitOnStock;
-	private String unitOnOrder;
-	private short isActive;
+	protected long productID;
+	protected String productName;
+	protected String productDescription;
+	protected Supplier supplier;
+	protected Category category;
+	protected int quantityPerUnit;
+	protected BigDecimal unitPrice;
+	protected String availableSize;
+	protected String availableColors;
+	protected String size;
+	protected String color;
+	protected BigDecimal discount;
+	protected String unitWeight;
+	protected String unitOnStock;
+	protected String unitOnOrder;
+	protected short isActive;
 	
 	public Product() {
 		super();

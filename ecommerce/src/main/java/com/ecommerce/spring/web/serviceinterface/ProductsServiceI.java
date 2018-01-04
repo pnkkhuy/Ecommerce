@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.ecommerce.spring.web.model.Product;
+import com.ecommerce.spring.web.model.ProductForm;
 
 public interface ProductsServiceI {
 
@@ -19,6 +20,6 @@ public interface ProductsServiceI {
 	
 	public void insertProduct(Product product) throws Exception;
 	
-	public void updateProduct(Product product) throws Exception;
+	public void updateProduct(ProductForm product) throws Exception;
 	
 }

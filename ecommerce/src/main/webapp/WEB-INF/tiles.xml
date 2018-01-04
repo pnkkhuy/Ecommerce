@@ -158,6 +158,8 @@
 			<put-attribute name="title" value="Thêm sản phẩm" />
 			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_product.jsp"></put-attribute>
 			
+			
+			
 			<put-list-attribute name="javascripts" inherit="true">
 				<!-- CK Editor -->
 				<add-attribute value="/resources/Template/AdminLTE-2.4.2/bower_components/ckeditor/ckeditor.js" />
@@ -167,12 +169,18 @@
 				<!-- Script Editor by PNKHuy -->
 				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/editor.js" />
 								
-				
 			</put-list-attribute>
 		</definition>
+		
 		<definition name="updateproduct.layout" extends="adminpage.layout">
 			<put-attribute name="title" value="Cập nhật thông tin sản phẩm" />
 			<put-attribute name="body" value="/WEB-INF/layouts/admin/_add_update_product.jsp"></put-attribute>
+			
+			<put-list-attribute name="stylesheets" inherit="true">
+				<!-- Huy PNK Add Test -->				
+				<!-- File Input -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/css/fileinput.min.css" />
+			</put-list-attribute>
 			
 			<put-list-attribute name="javascripts" inherit="true">
 				<!-- CK Editor -->
@@ -182,6 +190,11 @@
 							
 				<!-- Script Editor by PNKHuy -->
 				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/editor.js" />	
+				
+				<!-- Huy PNK Add Test -->				
+				<!-- File Input -->
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/fileinput.min.js"></add-attribute>
+				<add-attribute value="/resources/Template/AdminLTE-2.4.2/dist/js/myInputFileUpload.js"></add-attribute>
 			</put-list-attribute>
 		</definition>				
 <!-- Admin Page End -->	
