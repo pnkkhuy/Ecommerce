@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ecommerce.spring.web.model.CustomUser;
 import com.ecommerce.spring.web.service.AccountsService;
+import com.ecommerce.spring.web.service.ImagesService;
 
 /**
  * Handles requests for the application home page.
@@ -27,6 +29,9 @@ public class HomeController {
 	
 	@Autowired
 	AccountsService accountsService;
+	
+	@Autowired
+	ImagesService imagesService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -81,5 +86,17 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/productImage/{imageID}", method = RequestMethod.GET)
+	@ResponseBody
+	public void getAvatar(final HttpServletResponse response, @PathVariable("imageID")long imageID) throws IOException  {
+		
+		byte[] bytes = imagesService.getImageByImageID(imageID);
+		
+	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+	    response.getOutputStream().write(bytes);
+
+	    response.getOutputStream().close();
+		
+	}
 
 }

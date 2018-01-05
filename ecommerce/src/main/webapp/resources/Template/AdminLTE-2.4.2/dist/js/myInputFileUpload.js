@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 $(document).ready(function () {
     $("#kv-explorer").fileinput({
         'theme': 'explorer-fa',
@@ -12,7 +11,8 @@ $(document).ready(function () {
         fileActionSettings : {
         	// Disable
         	showUpload : false, // Hide upload button in thumbnail images
-        },
+        }
+        
 //        initialPreview: [
 //            "http://lorempixel.com/1920/1080/nature/1",
 //            "http://lorempixel.com/1920/1080/nature/2",

@@ -3,17 +3,17 @@ package com.ecommerce.spring.web.model;
 public class Image {
 	
 	private long imageID;
-	private String path;
+	private byte[] image;
 	private long productID;
 	private long categoryID;
 	
 	public Image() {
 		super();
 	}
-	public Image(long imageID, String path, long productID, long categoryID) {
+	public Image(long imageID, byte[] image, long productID, long categoryID) {
 		super();
 		this.imageID = imageID;
-		this.path = path;
+		this.image = image;
 		this.productID = productID;
 		this.categoryID = categoryID;
 	}
@@ -23,11 +23,12 @@ public class Image {
 	public void setImageID(long imageID) {
 		this.imageID = imageID;
 	}	
-	public String getPath() {
-		return path;
+	
+	public byte[] getImage() {
+		return image;
 	}
-	public void setPath(String path) {
-		this.path = path;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	public long getProductID() {
 		return productID;

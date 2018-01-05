@@ -1,6 +1,7 @@
 package com.ecommerce.spring.web.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Product {
 	protected long productID;
@@ -18,6 +19,7 @@ public class Product {
 	protected String unitWeight;
 	protected String unitOnStock;
 	protected String unitOnOrder;
+	protected List<Image> images;
 	protected short isActive;
 	
 	public Product() {
@@ -26,7 +28,8 @@ public class Product {
 	
 	public Product(long productID, String productName, String productDescription, Supplier supplier, Category category,
 			int quantityPerUnit, BigDecimal unitPrice, String availableSize, String availableColors, String size,
-			String color, BigDecimal discount, String unitWeight, String unitOnStock, String unitOnOrder, short isActive) {
+			String color, BigDecimal discount, String unitWeight, String unitOnStock, String unitOnOrder,
+			List<Image> images, short isActive) {
 		super();
 		this.productID = productID;
 		this.productName = productName;
@@ -43,9 +46,17 @@ public class Product {
 		this.unitWeight = unitWeight;
 		this.unitOnStock = unitOnStock;
 		this.unitOnOrder = unitOnOrder;
+		this.images = images;
 		this.isActive = isActive;
 	}
 
+
+	public List<Image> getImages() {
+		return images;
+	}
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
 	public long getProductID() {
 		return productID;
 	}

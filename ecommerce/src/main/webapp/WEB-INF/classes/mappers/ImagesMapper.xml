@@ -13,20 +13,34 @@
 		SELECT * FROM images;
 	</select>	
 	
-	<select id="findOneImageByProductID" resultMap="Image" parameterType="int">
+	<select id="getImageByImageID" resultMap="Image" parameterType="long">
+		SELECT *
+		FROM images
+		WHERE ImageID = #{imageID}
+	</select>
+	
+	
+	<select id="findOneImageByProductID" resultMap="Image" parameterType="long">
 		SELECT *
 		FROM images
 		WHERE ProductID = #{productID}
 	</select>
 	
-	<update id="deleteImage" parameterType="int">
+	<update id="deleteImage" parameterType="long">
 		DELETE FROM images
 		WHERE ImageID = #{imageID}
 	</update>
 	
+	<update id="deleteImageFromProductID" parameterType="long">
+		DELETE FROM images
+		WHERE ProductID = #{productID}
+	</update>
+	
 	<insert id="insertImage" parameterType="com.ecommerce.spring.web.model.Image">
-		INSERT INTO images(Image, Description, CategoryID, ProductID)
-		VALUES(#{image}, #{description}, #{categoryID}, #{productID})
+		INSERT INTO images(Image, CategoryID, ProductID)
+		VALUES(#{image, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.BlobTypeHandler}, 
+				#{categoryID}, 
+				#{productID})
 	</insert>
 	
 	<update id="updateImageByProductID" parameterType="com.ecommerce.spring.web.model.Image">

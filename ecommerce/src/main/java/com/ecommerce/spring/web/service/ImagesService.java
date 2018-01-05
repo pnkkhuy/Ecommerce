@@ -1,12 +1,12 @@
 package com.ecommerce.spring.web.service;
 
-import java.awt.Image;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.spring.web.mappers.ImagesMapper;
+import com.ecommerce.spring.web.model.Image;
 import com.ecommerce.spring.web.serviceinterface.ImagesServiceI;
 
 @Service("imagesService")
@@ -21,16 +21,29 @@ public class ImagesService implements ImagesServiceI {
 	}
 
 	@Override
-	public Image findOneImageByProductID(int productID) {
+	public Image findOneImageByProductID(long productID) {
 		return imagesMapper.findOneImageByProductID(productID);
+	}
+	
+	@Override
+	public byte[] getImageByImageID(long imageID) {
+		return imagesMapper.getImageByImageID(imageID).getImage();
 	}
 
 	@Override
-	public void deleteImage(int imageID) throws Exception {
+	public void deleteImage(long imageID) throws Exception {
 		try {
 			imagesMapper.deleteImage(imageID);
 		} catch(Exception e) {
 			throw new Exception("[deleteImage] - Images Service Error: " + e.getMessage());
+		}
+	}
+	
+	public void deleteImageFromProductID(long productID) throws Exception {
+		try {
+			imagesMapper.deleteImageFromProductID(productID);
+		} catch(Exception e) {
+			throw new Exception("[deleteImageFromProductID] - Images Service Error: " + e.getMessage());
 		}
 	}
 
