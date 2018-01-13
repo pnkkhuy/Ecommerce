@@ -71,7 +71,7 @@
 		WHERE ProductID = #{productID}
 	</update>
 	
-	<insert id="insertProduct" parameterType="com.ecommerce.spring.web.model.Product">
+	<insert id="insertProduct" parameterType="com.ecommerce.spring.web.model.Product" keyProperty="id">
 		INSERT INTO products
 			(ProductName, 
 			ProductDescription, 
@@ -103,7 +103,10 @@
 			 #{unitWeight, jdbcType=VARCHAR},
 			 #{unitOnStock, jdbcType=VARCHAR},
 			 #{unitOnOrder, jdbcType=VARCHAR},			
-			 1)
+			 1);
+		<selectKey keyProperty="productID" resultType="long" order="AFTER">         
+         SELECT LAST_INSERT_ID() as productID;
+		</selectKey>
 	</insert>
 	
 	<update id="updateProduct" parameterType="com.ecommerce.spring.web.model.Product">

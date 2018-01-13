@@ -17,7 +17,7 @@ public interface ProductsMapper {
 	void deleteOrUndeleteProduct(@Param("productID") int productID,
 									@Param("isActive") int isActive) throws Exception;
 	
-	void insertProduct(Product product) throws Exception;
+	long insertProduct(Product product) throws Exception;
 	
 	void updateProduct(Product product) throws Exception;
 

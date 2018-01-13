@@ -20,8 +20,8 @@
 	</select>
 	
 	
-	<select id="findOneImageByProductID" resultMap="Image" parameterType="long">
-		SELECT *
+	<select id="getImageIDsByProductID" resultMap="Image" parameterType="long">
+		SELECT ImageID
 		FROM images
 		WHERE ProductID = #{productID}
 	</select>

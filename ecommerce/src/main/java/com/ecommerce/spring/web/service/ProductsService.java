@@ -51,9 +51,19 @@ public class ProductsService implements ProductsServiceI {
 	}
 
 	@Override
-	public void insertProduct(Product product) throws Exception {
+	public void insertProduct(ProductForm product) throws Exception {
 		try {
 			productsMapper.insertProduct(product);
+			long productID = product.getProductID();
+			// Insert Image data vào database		
+			for(MultipartFile multipartfile : product.getMultipartFiles()) {				
+				
+				Image image = new Image();			
+				image.setImage(multipartfile.getBytes());
+				image.setProductID(productID);
+				imagesMapper.insertImage(image);
+			}
+			
 		} catch (Exception e) {
 			throw new Exception("[insertProduct] - Product Service Error: " + e.getMessage());
 		}		
@@ -62,7 +72,6 @@ public class ProductsService implements ProductsServiceI {
 	@Override
 	public void updateProduct(ProductForm product) throws Exception {
 		try {
-			imagesMapper.deleteImageFromProductID(product.getProductID());
 			// Insert Image data vào database		
 			for(MultipartFile multipartfile : product.getMultipartFiles()) {				
 				
@@ -71,7 +80,7 @@ public class ProductsService implements ProductsServiceI {
 				image.setProductID(product.getProductID());
 				imagesMapper.insertImage(image);
 			}
-			//productsMapper.updateProduct(product);
+			productsMapper.updateProduct(product);
 		} catch (Exception e) {
 			throw new Exception("[updateProduct] - Product Service Error: " + e.getMessage());
 		}

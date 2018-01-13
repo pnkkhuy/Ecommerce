@@ -37,14 +37,14 @@
 	
 	<insert id="insertAccount" parameterType="com.ecommerce.spring.web.model.Account">
 		INSERT INTO Accounts(Email, Password, Role, FullName, Address, Phone, BillingAddress, ShipAddress, DateEntered)
-		VALUES(	#{Email, jdbcType=VARCHAR}, 
-				#{Password, jdbcType=VARCHAR}, 
-				#{Role, jdbcType=VARCHAR}, 
-				#{FullName, jdbcType=VARCHAR}, 
-				#{Address, jdbcType=VARCHAR}, 
-				#{Phone, jdbcType=VARCHAR}, 
-				#{BillingAddress, jdbcType=VARCHAR}, 
-				#{ShipAddress, jdbcType=VARCHAR}, 
+		VALUES(	#{email, jdbcType=VARCHAR}, 
+				#{password, jdbcType=VARCHAR}, 
+				'ROLE_USER', 
+				#{fullName, jdbcType=VARCHAR}, 
+				#{address, jdbcType=VARCHAR}, 
+				#{phone, jdbcType=VARCHAR}, 
+				#{billingAddress, jdbcType=VARCHAR}, 
+				#{shipAddress, jdbcType=VARCHAR}, 
 				Now())
 	</insert>
 	<update id="updateAccount" parameterType="com.ecommerce.spring.web.model.Account">

@@ -18,7 +18,7 @@ public interface ProductsServiceI {
 	public void deleteOrUndeleteProduct(@Param("productID") int productID,
 									@Param("isActive") int isActive) throws Exception;
 	
-	public void insertProduct(Product product) throws Exception;
+	public void insertProduct(ProductForm product) throws Exception;
 	
 	public void updateProduct(ProductForm product) throws Exception;
 	

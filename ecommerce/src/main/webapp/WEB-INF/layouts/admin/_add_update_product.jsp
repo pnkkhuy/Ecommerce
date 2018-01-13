@@ -22,10 +22,17 @@
 			</c:if>
 			
 			<!-- Thiết lập trỏ đến action Add hay Update -->
-			<c:choose>
+			<c:choose>				
 				<c:when test="${action == 'update'}">
 					<spring:url value="/admin/products/updateprocess" var="directToController"/>	
 					<c:set value="Update" var="btnSubmit"/>
+					
+					<script type="text/javascript">
+						var linkGetImageIDsByProductID = `<spring:url value="/api/image/getImageIDsByProductID/${productForm.productID}"/>`;
+						var linkGetImage = `<spring:url value="/api/image/getImage/"/>`
+						var linkDeleteImage = `<spring:url value="/api/image/delete?${_csrf.parameterName}=${_csrf.token}"/>` 
+					</script>
+					
 				</c:when>
 				<c:otherwise>
 					<spring:url value="/admin/products/addprocess" var="directToController" />
@@ -255,20 +262,6 @@
 						</div>
 					</div>
 					</spring:bind>
-					
-<!-- 					<div class="form-group"> -->
-<!-- 							<label for="exampleInputFile" class="col-sm-2 control-label">Hình ảnh</label> -->
-<!-- 							<div class="col-md-9"> -->
-<%-- 							    <form:input name="image"  --%>
-<%-- 							    			path="listMultiPartFileImage"  --%>
-<%-- 							    			type="file" --%>
-<%-- 							    			id="exampleInputFile"  --%>
-<%-- 							    			multiple="multiple" />					 --%>
-<!-- 							</div> -->
-<!-- 	                </div> -->
-					
-					
-								
 	                <div class="box-footer">	                		                	
 	                	<button type="submit" class="btn btn-info pull-right">${btnSubmit}</button>
 		                <button type="button" ng-click="reset()" class="btn btn-info">Clear</button>				                	
@@ -282,8 +275,8 @@
 
             
 	<script type="text/javascript">
-		angular.module('myProduct', []).controller('ProductController',  ['$scope', function($scope) {
-			
+		var action = `${action}`;
+		angular.module('myProduct', []).controller('ProductController',  ['$scope', function($scope) {			
 			$scope.productName = 		'${productForm.productName}';
 			$scope.supplierID = 		'${productForm.supplier.supplierID}';
 			$scope.categoryID = 		'${productForm.category.categoryID}';
@@ -298,12 +291,9 @@
 			var html = $('#editor1').val();			
 			
 		    $scope.leader = {};
-// 		    angular.copy(productForm, $scope.leader);
 			    
 		    $scope.reset = function() {
-			    console.log("button clicked..");
-			      // Example with 1 argument
-	// 		      $scope.productForm = angular.copy($scope.leader);
+			    console.log("button clicked..");	
 			      
 				$scope.productName = 		'${productForm.productName}';
 				$scope.supplierID = 		'${productForm.supplier.supplierID}';
@@ -318,8 +308,6 @@
 				$scope.unitOnStock = 		Number('${productForm.unitOnStock}');
 				CKEDITOR.instances['editor1'].setData(html);
 		    };
-
-// 		    $scope.reset();
 		    
 		}]);
 	</script>	

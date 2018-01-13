@@ -9,7 +9,7 @@ public interface ImagesServiceI {
 	
 	List<Image> getAll();
 	byte[] getImageByImageID(long imageID);
-	Image findOneImageByProductID(long productID);
+	long[] getImageIDsByProductID(long productID);
 	void deleteImage(long imageID) throws Exception;
 	void deleteImageFromProductID(long productID) throws Exception;
 	void insertImage(Image image) throws Exception;

@@ -1,5 +1,7 @@
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -40,33 +42,87 @@
                   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
 
+              <spring:url value="/create_account" var="linkCreateAccount" />
               
-              <form id="register-form" action="<c:url value='/create_account' />" method="POST" role="form" style="display: none;">
-                <h2>REGISTER</h2>
-                  <div class="form-group">
-                    <input type="email" name="email" maxlength="200" id="email" tabindex="1" class="form-control" placeholder="Nhập địa chỉ email" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="password" maxlength="30" id="password" tabindex="2" class="form-control" placeholder="Nhập mật khẩu">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="confirm-password" maxlength="30" id="confirm-password" tabindex="2" class="form-control" placeholder="Xác nhận mật khẩu">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="fullname" id="fullname" maxlength="200" tabindex="3" class="form-control" placeholder="Tên đầy đủ">
-                  </div>                  
-                  <div class="form-group">
-                    <input type="text" name="phone" maxlength="45" id="phone" tabindex="4" class="form-control" placeholder="Số điện thoại">
-                  </div>
+				<form:form role="form" id="register-form" action="${linkCreateAccount}" method="POST" style="display: none;" modelAttribute="accountForm" accept-charset="UTF-8">
+					<h2>Đăng kí</h2>
+                
+	                <spring:bind path="email">	
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+								<form:input type="email" path="email" 
+											maxlength="200" tabindex="1" 
+											class="form-control" placeholder="Email"/>
+								<form:errors path="email" class="control-label" />
+						</div>
+					</spring:bind>
+					
+					<spring:bind path="newpassword">	
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+								<form:input type="password" path="newpassword" 
+											maxlength="30" tabindex="2" 
+											class="form-control" placeholder="Mật khẩu"/>
+								<form:errors path="newpassword" class="control-label" />
+						</div>
+					</spring:bind>
+					
+					<spring:bind path="confirmnewpassword">	
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+								<form:input type="password" path="confirmnewpassword" 
+											maxlength="30" tabindex="3" 
+											class="form-control" placeholder="Xác nhận mật khẩu"/>
+								<form:errors path="confirmnewpassword" class="control-label" />
+						</div>
+					</spring:bind>
+					           
+					<spring:bind path="fullName">	
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+								<form:input type="text" path="fullName" 
+											maxlength="200" tabindex="4" 
+											class="form-control" placeholder="Họ và tên"/>
+								<form:errors path="fullName" class="control-label" />
+						</div>
+					</spring:bind>
+					
+					<spring:bind path="address">	
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+								<form:input type="text" path="address" 
+											maxlength="200" tabindex="5" 
+											class="form-control" placeholder="Địa chỉ"/>
+								<form:errors path="address" class="control-label" />
+						</div>
+					</spring:bind>
+					
+					<spring:bind path="phone">	
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+								<form:input type="text" path="address" 
+											maxlength="45" tabindex="6" 
+											class="form-control" placeholder="Điện thoại"/>
+								<form:errors path="address" class="control-label" />
+						</div>
+					</spring:bind>
+					
+<!--                   <div class="form-group"> -->
+<!--                     <input type="password" name="password" maxlength="30" id="password" tabindex="2" class="form-control" placeholder="Nhập mật khẩu"> -->
+<!--                   </div> -->
+<!--                   <div class="form-group"> -->
+<!--                     <input type="password" name="confirm-password" maxlength="30" id="confirm-password" tabindex="2" class="form-control" placeholder="Xác nhận mật khẩu"> -->
+<!--                   </div> -->
+<!--                   <div class="form-group"> -->
+<!--                     <input type="text" name="fullname" id="fullname" maxlength="200" tabindex="3" class="form-control" placeholder="Tên đầy đủ"> -->
+<!--                   </div>                   -->
+<!--                   <div class="form-group"> -->
+<!--                     <input type="text" name="phone" maxlength="45" id="phone" tabindex="4" class="form-control" placeholder="Số điện thoại"> -->
+<!--                   </div> -->
+                  
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                        <input type="submit" name="register-submit" id="register-submit" tabindex="7" class="form-control btn btn-register" value="Đăng ký">
                       </div>
                     </div>
                   </div>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />                 
-              </form>
+              </form:form>
             </div>
           </div>
           

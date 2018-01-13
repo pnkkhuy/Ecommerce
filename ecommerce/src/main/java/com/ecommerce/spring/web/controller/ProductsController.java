@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ecommerce.spring.web.model.Product;
 import com.ecommerce.spring.web.model.ProductForm;
 import com.ecommerce.spring.web.service.CategoryService;
 import com.ecommerce.spring.web.service.ProductsService;
@@ -50,7 +49,7 @@ public class ProductsController {
 	@RequestMapping(value = "/admin/products/add**", method = RequestMethod.GET)
 	public String addProduct(Model model) {
 		
-		model.addAttribute("productForm", new Product());
+		model.addAttribute("productForm", new ProductForm());
 		model.addAttribute("action", "add");
 		model.addAttribute("listSuppliers", suppliersService.getAllAvailableSuppliers());
 		model.addAttribute("listCategories", categoryService.getAllAvailableCategory());
@@ -58,7 +57,7 @@ public class ProductsController {
 	}
 	
 	@RequestMapping(value = "/admin/products/addprocess", method = RequestMethod.POST)
-	public String addProductProcess(@ModelAttribute("productForm")@Validated Product product,
+	public String addProductProcess(@ModelAttribute("productForm")@Validated ProductForm product,
 										BindingResult result, Model model, 
 										final RedirectAttributes redirectAttributes) {
 

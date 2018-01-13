@@ -2,32 +2,48 @@
  * 
  */
 $(document).ready(function () {
-    $("#kv-explorer").fileinput({
-        'theme': 'explorer-fa',
-        'uploadUrl': '#',
-        //overwriteInitial: false,
-        showUpload: false, // hide upload button
-        initialPreviewAsData: true,
-        fileActionSettings : {
-        	// Disable
-        	showUpload : false, // Hide upload button in thumbnail images
-        }
-        
-//        initialPreview: [
-//            "http://lorempixel.com/1920/1080/nature/1",
-//            "http://lorempixel.com/1920/1080/nature/2",
-//            "http://lorempixel.com/1920/1080/nature/3"
-//        ],
-//        
-//        initialPreviewConfig: [
-//            {caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
-//            {caption: "nature-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2},
-//            {caption: "nature-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3}
-//        ]
-    });
-    /*
-     $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
-     alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
-     });
-     */
+	if(action == 'update') {
+		var files = [];
+		var filesInfo = [];
+				
+		$.ajax({
+	          url: linkGetImageIDsByProductID,
+	          type: 'GET',
+	          async: false,
+	          contentType: "application/json",
+	          success: function(result){
+	        	  $.each(result, function(i, field){
+	              	var img = $('<img>').attr('src', linkGetImage + field);	        		  
+	          		files.push(img.get(0).src);
+	          		var item = {};
+	          		item.url = linkDeleteImage;
+	          		item.key = field;
+	          		filesInfo.push(item);
+	              });
+	          }
+	    });				
+		
+	    $("#kv-explorer").fileinput({
+	        'theme': 'explorer-fa', 
+	        showUpload: false, // hide upload button
+	        overwriteInitial: false,
+	        initialPreviewAsData: true,
+	        fileActionSettings : {
+	        	showUpload : false, // Hide upload button in thumbnail images
+	        },
+	        allowedFileExtensions: ["jpg", "png"],
+	    	initialPreview: files,
+	    	initialPreviewConfig: filesInfo
+	    });
+	} else {
+		$("#kv-explorer").fileinput({       
+	        showUpload: false, // hide upload button
+	        initialPreviewAsData: true,
+	        allowedFileExtensions: ["jpg", "png"],
+	        fileActionSettings : {
+	        	showUpload : false, // Hide upload button in thumbnail images
+	        },
+	    });
+	}
+	
 });

@@ -21,8 +21,13 @@ public class ImagesService implements ImagesServiceI {
 	}
 
 	@Override
-	public Image findOneImageByProductID(long productID) {
-		return imagesMapper.findOneImageByProductID(productID);
+	public long[] getImageIDsByProductID(long productID) {
+		Image[] listImage = imagesMapper.getImageIDsByProductID(productID);
+		long[] listImageID = new long[listImage.length];
+		for (int i = 0; i < listImage.length; i++) {
+			listImageID[i] = listImage[i].getImageID();
+		}
+		return listImageID;
 	}
 	
 	@Override

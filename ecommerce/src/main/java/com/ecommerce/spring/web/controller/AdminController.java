@@ -50,7 +50,6 @@ public class AdminController {
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			CustomUser userDetail = (CustomUser) auth.getPrincipal();
 			model.addAttribute("stringFullName", userDetail.getFullName());
-
 		}
 		
 		return "adminpage.layout";
