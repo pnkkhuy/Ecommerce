@@ -99,21 +99,7 @@
 											class="form-control" placeholder="Điện thoại"/>
 								<form:errors path="address" class="control-label" />
 						</div>
-					</spring:bind>
-					
-<!--                   <div class="form-group"> -->
-<!--                     <input type="password" name="password" maxlength="30" id="password" tabindex="2" class="form-control" placeholder="Nhập mật khẩu"> -->
-<!--                   </div> -->
-<!--                   <div class="form-group"> -->
-<!--                     <input type="password" name="confirm-password" maxlength="30" id="confirm-password" tabindex="2" class="form-control" placeholder="Xác nhận mật khẩu"> -->
-<!--                   </div> -->
-<!--                   <div class="form-group"> -->
-<!--                     <input type="text" name="fullname" id="fullname" maxlength="200" tabindex="3" class="form-control" placeholder="Tên đầy đủ"> -->
-<!--                   </div>                   -->
-<!--                   <div class="form-group"> -->
-<!--                     <input type="text" name="phone" maxlength="45" id="phone" tabindex="4" class="form-control" placeholder="Số điện thoại"> -->
-<!--                   </div> -->
-                  
+					</spring:bind>					              
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">

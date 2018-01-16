@@ -64,6 +64,12 @@
 		WHERE ProductID = #{productID}
 	</select>
 	
+	<select id="getListProductsByCategoryID" resultMap="Product" parameterType="int">
+		SELECT * 
+		FROM products
+		WHERE CategoryID = #{categoryID} AND IsActive = 1
+	</select>
+	
 	<update id="deleteOrUndeleteProduct" parameterType="int">
 		UPDATE products
 		SET		 

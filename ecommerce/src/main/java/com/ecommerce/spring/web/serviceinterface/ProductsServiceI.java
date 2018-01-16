@@ -15,6 +15,8 @@ public interface ProductsServiceI {
 	
 	public Product findOneProductByID(@Param("productID") int productID)  throws Exception;
 	
+	public Product[] getListProductsByCategoryID(@Param("categoryID")int categoryID) throws Exception;
+	
 	public void deleteOrUndeleteProduct(@Param("productID") int productID,
 									@Param("isActive") int isActive) throws Exception;
 	

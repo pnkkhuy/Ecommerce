@@ -201,4 +201,25 @@
 		</definition>				
 <!-- Admin Page End -->	
 
+<!-- Shop Page Start-->
+	<!-- Page Index Layout -->
+	<definition name="shop.layout" template="/WEB-INF/layouts/shop/_index.jsp" >
+		<put-attribute name="title" value="Admin"></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		
+	</definition>
+	
+	<!-- Trang hiển thị thông tin cập nhật profile -->
+	<definition name="shop.home.layout" extends="shop.layout">
+		<put-attribute name="title" value="Trang chủ"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="body_1" value="/WEB-INF/layouts/shop/_home.jsp"/>
+	</definition>
+	
+	<definition name="shop.product.layout" extends="shop.layout">
+		<put-attribute name="title" value="Sản phẩm"/>
+		<put-attribute name="body" value="/WEB-INF/layouts/shop/_products.jsp"/>
+		<put-attribute name="body_1" value=""/>
+	</definition>
+<!-- Shop Page End-->		
 </tiles-definitions>

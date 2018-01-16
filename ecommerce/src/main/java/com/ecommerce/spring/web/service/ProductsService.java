@@ -86,4 +86,13 @@ public class ProductsService implements ProductsServiceI {
 		}
 	}
 
+	@Override
+	public Product[] getListProductsByCategoryID(int categoryID) throws Exception {
+		try {
+			return productsMapper.getListProductsByCategoryID(categoryID);
+		} catch (Exception e) {
+			throw new Exception("[getListProductsByCategoryID] - Product Service Error: " + e.getMessage());
+		}
+	}
+
 }
